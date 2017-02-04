@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : AbstractDamageTaker {
 
 	public float speed;
 	private Rigidbody player;
+    public Image healthDisplay;
 
     // Use this for initialization
     void Start () {
@@ -25,5 +27,6 @@ public class Player : AbstractDamageTaker {
 		float moveHorizontal = Input.GetAxis ("Horizontal");
 		float moveVertical = Input.GetAxis ("Vertical");
 		Move (moveHorizontal, moveVertical);
+        healthDisplay.transform.localScale = new Vector3((float)Health / 100F, 1, 1);
 	}
 }
