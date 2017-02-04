@@ -6,7 +6,7 @@ class Game : MonoBehaviour
 {
     public Text MoneyDisplay;
     public static Game GameInstance;
-    private Player _player;
+    public Player Player;
     private ZombieSpawner _zombieSpawner;
     private int _money;
 

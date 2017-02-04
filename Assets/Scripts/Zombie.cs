@@ -27,7 +27,16 @@ public class Zombie : AbstractDamageTaker
         {
             nma.Resume();
         }
+        if(target == null)
+        {
+            target = getTarget();
+        }
         nma.SetDestination(target.position);
+    }
+
+
+    public Transform getTarget() {
+        return Game.GameInstance.Player.transform;
     }
 
     void OnDestroy()
@@ -38,7 +47,7 @@ public class Zombie : AbstractDamageTaker
     void OnCollisionEnter(Collision collision)
     {
         AbstractDamageTaker target = collision.gameObject.GetComponent<AbstractDamageTaker>();
-        if (target != null && cd <= 0 &&target.CompareTag("friendly"))
+        if (target != null && cd <= 0 && target.CompareTag("friendly"))
         {
             Attack(target);
         }
