@@ -37,7 +37,9 @@ class Game : MonoBehaviour
     public void ZombieDied()
     {
         _money += 5;
-        MoneyDisplay.text = "Money: " + _money;
+        if(MoneyDisplay != null) {
+            MoneyDisplay.text = "Money: " + _money;
+        }
     }
 
 	public void WaveDied() {
