@@ -1,9 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.AI;
 
-public class Zombie : MonoBehaviour
+public class Zombie : AbstractDamageTaker
 {
     protected NavMeshAgent nma;
     public Transform target;
@@ -18,5 +16,10 @@ public class Zombie : MonoBehaviour
     void Update()
     {
         nma.SetDestination(target.position);
+    }
+
+    void OnDestroy()
+    {
+        Game.GameInstance.ZombieDied();
     }
 }

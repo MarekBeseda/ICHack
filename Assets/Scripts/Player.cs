@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour {
+public class Player : AbstractDamageTaker {
 
 	public float speed;
-	private int health;
 	private Rigidbody player;
 
 	// Use this for initialization
@@ -14,8 +13,8 @@ public class Player : MonoBehaviour {
 	}
 
 	// This function moves the character
-	void Move(float moveX,float moveY) {
-		Vector2 movement = new Vector2 (moveX, moveY);
+	void Move(float moveX,float moveZ) {
+		Vector3 movement = new Vector3 (moveX,0, moveZ);
 		movement *= speed;
 		player.velocity = movement;
 	}
