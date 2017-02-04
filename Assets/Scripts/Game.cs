@@ -5,10 +5,12 @@ using UnityEngine.UI;
 class Game : MonoBehaviour
 {
     public Text MoneyDisplay;
+	public Text WaveDisplay;
     public static Game GameInstance;
     public Player Player;
     private ZombieSpawner _zombieSpawner;
     public int _money;
+	public int _wave;
 
 	private bool isPaused = false;
     void Start()
@@ -39,6 +41,11 @@ class Game : MonoBehaviour
             MoneyDisplay.text = "Money: " + _money;
         }
     }
+
+	public void WaveDied() {
+		_wave++;
+		WaveDisplay.text = "Wave: " + _wave;
+	}
 
     public void StructureDestroyed()
     {

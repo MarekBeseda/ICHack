@@ -10,7 +10,8 @@ public class ZombieSpawner : MonoBehaviour {
     private float AllowedRadiusRatio {
         get { return MinRadius / Radius; }
     }
-    private int _wave;
+	private int _wave;
+
     private Cooldown _waveCooldown;
 
 	// Use this for initialization
@@ -30,6 +31,8 @@ public class ZombieSpawner : MonoBehaviour {
 
     private void SpawnWave()
     {
+		Game.GameInstance.WaveDied ();
+
         for (int i = 0; i < SpawnCount; i++)
         {
             GameObject spawnling = GameObject.Instantiate(Prefab);
