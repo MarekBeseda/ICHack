@@ -10,10 +10,26 @@ class Game : MonoBehaviour
     private ZombieSpawner _zombieSpawner;
     private int _money;
 
+	private bool isPaused = false;
     void Start()
     {
         GameInstance = this;
     }
+
+	void Update() {
+		if(Input.GetKeyDown("escape") && !isPaused)
+		{
+			print("Paused");
+			Time.timeScale = 0.0f;
+			isPaused = true;
+		}
+		else if(Input.GetKeyDown("escape") && isPaused)
+		{
+			print("Unpaused");
+			Time.timeScale = 1.0f;
+			isPaused = false;  
+		} 
+	}
 
     /* TODO: Event system? This should be ok for now */
     public void ZombieDied()
