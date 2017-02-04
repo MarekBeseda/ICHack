@@ -928,48 +928,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 136709443956327236, guid: 9219b0a08219047c58ad153fcaf2db0b,
-        type: 2}
-      propertyPath: m_Height
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 136709443956327236, guid: 9219b0a08219047c58ad153fcaf2db0b,
-        type: 2}
-      propertyPath: m_Radius
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 136709443956327236, guid: 9219b0a08219047c58ad153fcaf2db0b,
-        type: 2}
-      propertyPath: m_Direction
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4761643815924016, guid: 9219b0a08219047c58ad153fcaf2db0b, type: 2}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 90
-      objectReference: {fileID: 0}
-    - target: {fileID: 4761643815924016, guid: 9219b0a08219047c58ad153fcaf2db0b, type: 2}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 54074121781700632, guid: 9219b0a08219047c58ad153fcaf2db0b,
-        type: 2}
-      propertyPath: Health
-      value: 100
-      objectReference: {fileID: 0}
     - target: {fileID: 114395379112228666, guid: 9219b0a08219047c58ad153fcaf2db0b,
         type: 2}
       propertyPath: healthDisplay
       value: 
       objectReference: {fileID: 590376256}
-    - target: {fileID: 114395379112228666, guid: 9219b0a08219047c58ad153fcaf2db0b,
-        type: 2}
-      propertyPath: Health
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 1532049834209398, guid: 9219b0a08219047c58ad153fcaf2db0b, type: 2}
-      propertyPath: m_TagString
-      value: Player
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9219b0a08219047c58ad153fcaf2db0b, type: 2}
   m_IsPrefabParent: 0
