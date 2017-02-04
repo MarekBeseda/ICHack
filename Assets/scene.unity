@@ -186,7 +186,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 25}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &226456878
 GameObject:
@@ -215,7 +215,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8f270700b957ff4b9a3fc55c38b389d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Prefab: {fileID: 1082609623}
+  Prefab: {fileID: 0}
   SpawnCount: 40
   Radius: 10
 --- !u!4 &226456880
@@ -582,11 +582,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fced0d3e514df437e92f53444b3fec1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1082609623 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1874768110233150, guid: a5c7955d6cefb4f4fa5daf2c18904be5,
-    type: 2}
-  m_PrefabInternal: {fileID: 1502570555}
 --- !u!1 &1293030222
 GameObject:
   m_ObjectHideFlags: 0
@@ -698,7 +693,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4426966053772522, guid: a5c7955d6cefb4f4fa5daf2c18904be5, type: 2}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 114852980703764862, guid: a5c7955d6cefb4f4fa5daf2c18904be5,
         type: 2}
@@ -796,7 +791,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4761643815924016, guid: 9219b0a08219047c58ad153fcaf2db0b, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 3.8
       objectReference: {fileID: 0}
     - target: {fileID: 4761643815924016, guid: 9219b0a08219047c58ad153fcaf2db0b, type: 2}
       propertyPath: m_LocalPosition.y
@@ -851,13 +846,8 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 54074121781700632, guid: 9219b0a08219047c58ad153fcaf2db0b,
         type: 2}
-      propertyPath: m_IsKinematic
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 54074121781700632, guid: 9219b0a08219047c58ad153fcaf2db0b,
-        type: 2}
-      propertyPath: m_UseGravity
-      value: 1
+      propertyPath: Health
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9219b0a08219047c58ad153fcaf2db0b, type: 2}

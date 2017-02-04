@@ -14,7 +14,6 @@ public class ZombieSpawner : MonoBehaviour{
         {
             GameObject spawnling = GameObject.Instantiate(Prefab);
             Vector2 pos = Random.insideUnitCircle;
-
             spawnling.transform.position =  new Vector3(pos.x, 0, pos.y) * Radius + transform.position;
         }
 	}

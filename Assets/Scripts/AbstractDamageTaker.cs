@@ -4,15 +4,15 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 
-public abstract class AbstractDamageTaker : MonoBehaviour, ITakeDamage
+public abstract class AbstractDamageTaker : MonoBehaviour
 {
-    private int _health;
+    public int Health;
 
     public void TakeDamage(int dmg)
     {
-        _health -= dmg;
+        Health -= dmg;
 
-        if (_health <= 0)
+        if (Health <= 0)
         {
             Destroy(this.gameObject);
         }
