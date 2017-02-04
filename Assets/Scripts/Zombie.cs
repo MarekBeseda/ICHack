@@ -7,26 +7,29 @@ public class Zombie : AbstractDamageTaker
     public Transform target;
 	public int power;
     public float attackStopTime;
-    private float cd;
+    private Cooldown attackCooldown;
 
     // Use this for initialization
     void Start()
     {
         nma = GetComponent<NavMeshAgent>();
+        attackCooldown = new Cooldown(0.5f);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(cd > 0)
+        attackCooldown.Update(Time.deltaTime);
+
+        if (!attackCooldown.Check())
         {
-            cd -= Time.deltaTime;
             nma.Stop();
         }
         else
         {
             nma.Resume();
         }
+
         if(target == null)
         {
             target = getTarget();
@@ -47,14 +50,15 @@ public class Zombie : AbstractDamageTaker
     void OnCollisionEnter(Collision collision)
     {
         AbstractDamageTaker target = collision.gameObject.GetComponent<AbstractDamageTaker>();
-        if (target != null && cd <= 0 && target.CompareTag("friendly"))
+
+        if (target != null && target.CompareTag("friendly") && attackCooldown.Check())
         {
             Attack(target);
         }
     }
 
 	void Attack(AbstractDamageTaker player) {
-        cd = attackStopTime;
+        attackCooldown.Trigger();
 		player.TakeDamage (power);
 	}
 }

@@ -8,10 +8,12 @@ class Tower : AbstractDamageTaker
 {
     private int _level;
     private AbstractDamageTaker _target;
+    private Cooldown _cooldown;
 
     void Start()
     {
         _target = null;
+        _cooldown = new Cooldown(0.25f);
     }
 
     void OnTriggerStay(Collider collider)
@@ -36,9 +38,8 @@ class Tower : AbstractDamageTaker
 
     void Update()
     {
-        if (_target != null)
+        if (_target != null && _cooldown.UpdateAndCheck(Time.deltaTime))
         {
-            Debug.Log("Pew pew");
             _target.TakeDamage(1);
         }
     }
