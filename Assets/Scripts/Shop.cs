@@ -17,6 +17,7 @@ public class Shop : MonoBehaviour
 
 	public void sell(Item item, Player player) {
 		Game.GameInstance._money -= item.price;
+		UpdateDisplay ();
 	}
 
 	// Use this for initialization
@@ -29,15 +30,14 @@ public class Shop : MonoBehaviour
 	void Update ()
 	{
 		UpdateDisplay ();
+	}
+
+	private void UpdateDisplay() {
 		/*
 			1. Check if player has X money for an item I.
 			2. Display item on the shop panel.
 			3. Remove any items above the player's budget.
 		*/
-	}
-
-	private void UpdateDisplay() {
-
 	}
 }
 
