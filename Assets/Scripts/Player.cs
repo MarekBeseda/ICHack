@@ -30,5 +30,8 @@ public class Player : AbstractDamageTaker {
 		float moveVertical = Input.GetAxis ("Vertical");
 		Move (moveHorizontal, moveVertical);
         healthDisplay.transform.localScale = new Vector3((float)Health / 100F, 1, 1);
-	}
+
+        Vector3 dir = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+        transform.rotation = Quaternion.Euler(90, 0, Mathf.Atan2(dir.z, dir.x) * Mathf.Rad2Deg -90);
+    }
 }
