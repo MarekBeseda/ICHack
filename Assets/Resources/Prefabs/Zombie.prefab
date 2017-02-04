@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3c672863338a81418e52f92a1bda296, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 0
+  Health: 5
   target: {fileID: 0}
   power: 5
   attackStopTime: 0.5

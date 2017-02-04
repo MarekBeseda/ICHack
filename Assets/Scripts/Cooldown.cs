@@ -1,4 +1,4 @@
-﻿class Cooldown
+﻿public class Cooldown
 {
     private float _max;
     private float _seconds;
