@@ -12,7 +12,7 @@ public abstract class AbstractDamageTaker : MonoBehaviour, ITakeDamage
     {
         _health -= dmg;
 
-        if (_health < 0)
+        if (_health <= 0)
         {
             Destroy(this.gameObject);
         }
