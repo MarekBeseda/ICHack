@@ -6,6 +6,8 @@ public class Bullet : MonoBehaviour {
 	public int power;
 	// Use this for initialization
 	void Start () {
+		Destroy (this.gameObject, 5);
+
 	}
 
 	void OnCollisionEnter(Collision collision)
@@ -20,6 +22,5 @@ public class Bullet : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		
 	}
 }
