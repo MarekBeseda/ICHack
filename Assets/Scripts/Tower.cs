@@ -14,9 +14,9 @@ class Tower : AbstractDamageTaker
         _target = null;
     }
 
-    void OnCollisionStay(Collision collision)
+    void OnTriggerStay(Collider collider)
     {
-        AbstractDamageTaker target = collision.gameObject.GetComponent<AbstractDamageTaker>();
+        AbstractDamageTaker target = collider.GetComponent<AbstractDamageTaker>();
 
         if (target != null && target.CompareTag("enemy") && _target == null)
         {
@@ -24,9 +24,9 @@ class Tower : AbstractDamageTaker
         }
     }
 
-    void OnCollisionExit(Collision collision)
+    void OnTriggerExit(Collider collider)
     {
-        var target = collision.gameObject.GetComponent<AbstractDamageTaker>();
+        var target = collider.GetComponent<AbstractDamageTaker>();
 
         if (target == _target)
         {
