@@ -21,6 +21,7 @@ public class Zombie : AbstractDamageTaker
 
     void OnDestroy()
     {
+		
         Game.GameInstance.ZombieDied();
     }
 
