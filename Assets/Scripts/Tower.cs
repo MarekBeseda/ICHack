@@ -6,6 +6,7 @@ using UnityEngine;
 
 class Tower : AbstractDamageTaker
 {
+    public Transform TowerHead;
     private int _level;
     private AbstractDamageTaker _target;
     private Cooldown _cooldown;
@@ -24,6 +25,7 @@ class Tower : AbstractDamageTaker
         {
             _target = target;
         }
+
     }
 
     void OnTriggerExit(Collider collider)
@@ -41,6 +43,10 @@ class Tower : AbstractDamageTaker
         if (_target != null && _cooldown.UpdateAndCheck(Time.deltaTime))
         {
             _target.TakeDamage(1);
+
+            Vector3 diff = _target.transform.position - transform.position;
+            Debug.Log(diff);
+            TowerHead.rotation = Quaternion.Euler(90, 0, Mathf.Atan2(diff.z, diff.x) * Mathf.Rad2Deg -90);
         }
     }
 }
