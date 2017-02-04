@@ -10,7 +10,9 @@ public class Bullet : MonoBehaviour {
 
 	void OnCollisionEnter(Collision collision)
 	{
-		if (collision.gameObject.GetComponent<AbstractDamageTaker>().CompareTag("enemy")) {
+        AbstractDamageTaker target = collision.gameObject.GetComponent<AbstractDamageTaker>();
+
+        if (target != null && target.CompareTag("enemy")) {
 			Destroy(this.gameObject);
 			collision.gameObject.GetComponent<AbstractDamageTaker> ().TakeDamage (power);
 		}
