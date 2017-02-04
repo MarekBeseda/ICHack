@@ -16,6 +16,7 @@ public class Weapon : MonoBehaviour {
 	// This function moves a bullet.
 	void Fire(Vector3 VelocityVector){
 		GameObject bullet = Instantiate (Bullet);
+		
 		bullet.GetComponent<Rigidbody> ().position = transform.position;
 		bullet.GetComponent<Rigidbody> ().velocity = VelocityVector * fireSpeed; 
 	}
@@ -29,7 +30,7 @@ public class Weapon : MonoBehaviour {
 			Debug.Log (XvelocityVector + " " + ZvelocityVector);
 
 			Vector3 VelocityVector = new Vector3(XvelocityVector, 0, ZvelocityVector);
-			VelocityVector /= Mathf.Sqrt(XvelocityVector * ZvelocityVector);
+			VelocityVector.Normalize ();
 			Fire (VelocityVector);
 		}
 	}
