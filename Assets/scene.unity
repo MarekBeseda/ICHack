@@ -420,6 +420,7 @@ RectTransform:
   m_Children:
   - {fileID: 1293030223}
   - {fileID: 1424563383}
+  - {fileID: 1698498118}
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -647,8 +648,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b96d58ae831c4c7c9b6512adefbe82b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireSpeed: 20
+  Damage: 50
+  BulletSpeed: 50
   Bullet: {fileID: 1264831675068790, guid: 73bac51e7c55140aba6457ba5e43bc1c, type: 2}
+  CooldownTime: 0.35
 --- !u!1 &1293030222
 GameObject:
   m_ObjectHideFlags: 0
@@ -953,6 +956,11 @@ Prefab:
       propertyPath: target
       value: 
       objectReference: {fileID: 1906847817}
+    - target: {fileID: 114852980703764862, guid: a5c7955d6cefb4f4fa5daf2c18904be5,
+        type: 2}
+      propertyPath: Health
+      value: 100
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a5c7955d6cefb4f4fa5daf2c18904be5, type: 2}
   m_IsPrefabParent: 0
@@ -984,7 +992,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MoneyDisplay: {fileID: 1293030224}
+  WaveDisplay: {fileID: 1698498119}
   Player: {fileID: 62988152}
+  _money: 0
+  _wave: 0
 --- !u!4 &1520189162
 Transform:
   m_ObjectHideFlags: 0
@@ -1257,6 +1268,80 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1647549525}
+--- !u!1 &1698498117
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1698498118}
+  - component: {fileID: 1698498120}
+  - component: {fileID: 1698498119}
+  m_Layer: 5
+  m_Name: WaveDisplay
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1698498118
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1698498117}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 507187915}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 185, y: -20}
+  m_SizeDelta: {x: 160, y: 30}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1698498119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1698498117}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 14
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 'Money: 0'
+--- !u!222 &1698498120
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1698498117}
 --- !u!1 &1699006230
 GameObject:
   m_ObjectHideFlags: 0
@@ -1517,6 +1602,11 @@ Prefab:
       propertyPath: healthDisplay
       value: 
       objectReference: {fileID: 590376256}
+    - target: {fileID: 114395379112228666, guid: 9219b0a08219047c58ad153fcaf2db0b,
+        type: 2}
+      propertyPath: weapon
+      value: 
+      objectReference: {fileID: 682896263}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9219b0a08219047c58ad153fcaf2db0b, type: 2}
   m_IsPrefabParent: 0
@@ -1538,6 +1628,7 @@ GameObject:
   - component: {fileID: 1971106620}
   - component: {fileID: 1971106624}
   - component: {fileID: 1971106625}
+  - component: {fileID: 1971106626}
   m_Layer: 9
   m_Name: Tower
   m_TagString: Untagged
@@ -1646,6 +1737,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Health: 50
   TowerHead: {fileID: 1981204321}
+  radius: 20
+  weapon: {fileID: 1971106626}
+--- !u!114 &1971106626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1971106619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b96d58ae831c4c7c9b6512adefbe82b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Damage: 25
+  BulletSpeed: 50
+  Bullet: {fileID: 1264831675068790, guid: 73bac51e7c55140aba6457ba5e43bc1c, type: 2}
+  CooldownTime: 0.25
 --- !u!1 &1981204320
 GameObject:
   m_ObjectHideFlags: 0
@@ -1669,8 +1777,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1981204320}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -0.1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 1971106623}
   m_RootOrder: 0

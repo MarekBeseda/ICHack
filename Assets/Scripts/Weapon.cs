@@ -4,32 +4,31 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour {
 
-	protected int damage;
-	public int fireSpeed;
+	public int Damage;
+	public int BulletSpeed;
 	public GameObject Bullet;
+    protected Cooldown cd;
+    public float CooldownTime;
 
 	// Use this for initialization
 	void Start () {
-		// Create a GameObject 
+        cd = new Cooldown(CooldownTime); 
 	}
 
 	// This function moves a bullet.
-	void Fire(Vector3 VelocityVector){
-		GameObject bullet = Instantiate (Bullet);
-		
-		bullet.transform.position = transform.position;
-		bullet.GetComponent<Rigidbody>().velocity = VelocityVector * fireSpeed; 
-	}
+	public void Fire(Vector3 VelocityVector){
+        if (cd.Check())
+        {
+            GameObject bullet = Instantiate(Bullet);
+            bullet.GetComponent<Bullet>().Power = Damage;
+            bullet.transform.position = transform.position;
+            bullet.GetComponent<Rigidbody>().velocity = VelocityVector.normalized * BulletSpeed;
+            cd.Trigger();
+        }
+    }
 		
 	// Update is called once per frame
 	void Update () {
-
-		if (Input.GetMouseButtonDown(0)) {
-            Vector3 VelocityVector = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
-            VelocityVector.y = 0;
-
-            VelocityVector.Normalize();
-			Fire (VelocityVector);
-		}
+        cd.Update(Time.deltaTime);   
 	}
 }

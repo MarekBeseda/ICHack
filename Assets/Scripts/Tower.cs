@@ -9,44 +9,45 @@ class Tower : AbstractDamageTaker
     public Transform TowerHead;
     private int _level;
     private AbstractDamageTaker _target;
-    private Cooldown _cooldown;
+    public float radius;
+    public Weapon weapon;
 
     void Start()
     {
         _target = null;
-        _cooldown = new Cooldown(0.25f);
     }
 
-    void OnTriggerStay(Collider collider)
+    private void UpdateTarget()
     {
-        AbstractDamageTaker target = collider.GetComponent<AbstractDamageTaker>();
-
-        if (target != null && target.CompareTag("enemy") && _target == null)
-        {
-            _target = target;
-        }
-
-    }
-
-    void OnTriggerExit(Collider collider)
-    {
-        var target = collider.GetComponent<AbstractDamageTaker>();
-
-        if (target == _target)
-        {
-            _target = null;
-        }
+        RaycastHit[] hits = Physics.SphereCastAll(transform.position, radius, Vector3.up, 0);
+        _target = hits.Select(x => x.collider.GetComponent<AbstractDamageTaker>())
+            .Where(x => x != null && x.CompareTag("enemy"))
+            .OrderBy(x => (x.transform.position - transform.position).sqrMagnitude)
+            .DefaultIfEmpty(null).First();
     }
 
     void Update()
     {
-        if (_target != null && _cooldown.UpdateAndCheck(Time.deltaTime))
+        if (_target == null)
         {
-            _target.TakeDamage(1);
+            UpdateTarget();
+        }
+        else if ((_target.transform.position - transform.position).sqrMagnitude > radius * radius)
+        {
+            _target = null;
+        }
+        if (_target != null)
+        {
+            weapon.Fire(_target.transform.position-transform.position);
 
             Vector3 diff = _target.transform.position - transform.position;
-            Debug.Log(diff);
-            TowerHead.rotation = Quaternion.Euler(90, 0, Mathf.Atan2(diff.z, diff.x) * Mathf.Rad2Deg -90);
+            TowerHead.rotation
+                = Quaternion.Euler(90, 0, Mathf.Atan2(diff.z, diff.x) * Mathf.Rad2Deg -90);
         }
+    }
+
+    void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(transform.position, radius);
     }
 }

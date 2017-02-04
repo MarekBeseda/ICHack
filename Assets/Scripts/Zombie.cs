@@ -4,6 +4,7 @@ using UnityEngine.AI;
 public class Zombie : AbstractDamageTaker
 {
     protected NavMeshAgent nma;
+    protected Rigidbody body;
     public Transform target;
 	public int power;
     public float attackStopTime;
@@ -13,7 +14,8 @@ public class Zombie : AbstractDamageTaker
     void Start()
     {
         nma = GetComponent<NavMeshAgent>();
-        attackCooldown = new Cooldown(0.5f);
+        body = GetComponent<Rigidbody>();
+        attackCooldown = new Cooldown(attackStopTime);
     }
 
     // Update is called once per frame
