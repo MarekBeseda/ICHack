@@ -8,7 +8,7 @@ class Game : MonoBehaviour
     public static Game GameInstance;
     public Player Player;
     private ZombieSpawner _zombieSpawner;
-    private int _money;
+    public int _money;
 
     void Start()
     {
