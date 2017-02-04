@@ -9,6 +9,11 @@ class Tower : AbstractDamageTaker
     private int _level;
     private AbstractDamageTaker _target;
 
+    void Start()
+    {
+        _target = null;
+    }
+
     void OnCollisionStay(Collision collision)
     {
         AbstractDamageTaker target = collision.gameObject.GetComponent<AbstractDamageTaker>();
@@ -19,7 +24,7 @@ class Tower : AbstractDamageTaker
         }
     }
 
-    void OnCollissionExit(Collision collision)
+    void OnCollisionExit(Collision collision)
     {
         var target = collision.gameObject.GetComponent<AbstractDamageTaker>();
 
@@ -33,6 +38,7 @@ class Tower : AbstractDamageTaker
     {
         if (_target != null)
         {
+            Debug.Log("Pew pew");
             _target.TakeDamage(1);
         }
     }

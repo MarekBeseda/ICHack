@@ -657,6 +657,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fced0d3e514df437e92f53444b3fec1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 1532049834209398, guid: 9219b0a08219047c58ad153fcaf2db0b, type: 2}
+  offset: {x: 0, y: 0, z: 0}
 --- !u!1 &1293030222
 GameObject:
   m_ObjectHideFlags: 0
@@ -953,6 +955,7 @@ GameObject:
   - component: {fileID: 1971106621}
   - component: {fileID: 1971106620}
   - component: {fileID: 1971106624}
+  - component: {fileID: 1971106625}
   m_Layer: 0
   m_Name: Tower
   m_TagString: Untagged
@@ -1047,6 +1050,18 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 0, z: 0}
   m_TimeToStationary: 0.5
+--- !u!114 &1971106625
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1971106619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d2913df5ef35864cb14980c7087f9d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Health: 50
 --- !u!1 &2050816901
 GameObject:
   m_ObjectHideFlags: 0
