@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour {
+public class Player : AbstractDamageTaker {
 
 	public float speed;
-	private int health;
 	private Rigidbody player;
 
 	// Use this for initialization
