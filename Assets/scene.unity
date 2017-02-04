@@ -520,7 +520,7 @@ Prefab:
     - target: {fileID: 54074121781700632, guid: 9219b0a08219047c58ad153fcaf2db0b,
         type: 2}
       propertyPath: m_IsKinematic
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 54074121781700632, guid: 9219b0a08219047c58ad153fcaf2db0b,
         type: 2}
