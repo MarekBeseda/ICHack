@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using UnityEngine;
-using UnityEngine.WSA;
+﻿using UnityEngine;
 
 class Game : MonoBehaviour
 {
@@ -19,11 +14,6 @@ class Game : MonoBehaviour
     }
 
     public void StructureDestroyed()
-    {
-        
-    }
-
-    public void PlaceStructure(Tile tile)
     {
         
     }
