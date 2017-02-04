@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4504262706191572}
   - component: {fileID: 212496282581711764}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39,7 +39,7 @@ GameObject:
   - component: {fileID: 195017168197928414}
   - component: {fileID: 114852980703764862}
   - component: {fileID: 54449983503454568}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Zombie
   m_TagString: enemy
   m_Icon: {fileID: 0}
