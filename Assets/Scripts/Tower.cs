@@ -7,4 +7,7 @@ using UnityEngine;
 class Tower : AbstractDamageTaker
 {
     private int _level;
+    private Zombie _closestZombie;
+    
+    void 
 }
