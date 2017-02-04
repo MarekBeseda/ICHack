@@ -8,7 +8,7 @@ public class Pistol : Gun {
 	void Start () {
 		// Placeholder values for pistol damage and ammo.
 		damage = 0;
-		ammo = 0;
+		ammo = 1000;
 	}
 	
 	// Update is called once per frame
