@@ -37,7 +37,7 @@ class Tower : AbstractDamageTaker
         }
         if (_target != null)
         {
-            weapon.Fire(_target.transform.position-transform.position);
+            weapon.Fire(_target.transform.position-transform.position + _target.GetComponent<Rigidbody>().velocity * 100000000);
         }
     }
 

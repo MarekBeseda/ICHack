@@ -986,6 +986,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MoneyDisplay: {fileID: 1293030224}
   Player: {fileID: 62988152}
+  _money: 0
 --- !u!4 &1520189162
 Transform:
   m_ObjectHideFlags: 0
@@ -1651,7 +1652,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Health: 50
-  radius: 5
+  radius: 15
   weapon: {fileID: 1971106626}
 --- !u!114 &1971106626
 MonoBehaviour:
@@ -1664,7 +1665,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b96d58ae831c4c7c9b6512adefbe82b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireSpeed: 1
+  fireSpeed: 30
   Bullet: {fileID: 1264831675068790, guid: 73bac51e7c55140aba6457ba5e43bc1c, type: 2}
   firerate: 0.25
 --- !u!1 &2050816901
