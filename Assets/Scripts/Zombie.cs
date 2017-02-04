@@ -5,6 +5,7 @@ public class Zombie : AbstractDamageTaker
 {
     protected NavMeshAgent nma;
     public Transform target;
+	private int power;
 
     // Use this for initialization
     void Start()
@@ -22,4 +23,8 @@ public class Zombie : AbstractDamageTaker
     {
         Game.GameInstance.ZombieDied();
     }
+
+	void Attack(AbstractDamageTaker player) {
+		player.TakeDamage (power);
+	}
 }
