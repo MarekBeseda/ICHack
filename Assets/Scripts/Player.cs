@@ -7,10 +7,10 @@ public class Player : AbstractDamageTaker {
 	public float speed;
 	private Rigidbody player;
 
-	// Use this for initialization
-	void Start () {
-		player = GetComponent<Rigidbody>();		
-	}
+    // Use this for initialization
+    void Start () {
+		player = GetComponent<Rigidbody>();
+    }
 
 	// This function moves the character
 	void Move(float moveX,float moveZ) {
