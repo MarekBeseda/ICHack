@@ -9,10 +9,12 @@ public class Player : AbstractDamageTaker {
 	private Rigidbody player;
     public Image healthDisplay;
 
-    // Use this for initialization
+	// Use this for initialization
     void Start () {
 		player = GetComponent<Rigidbody>();
     }
+
+
 
 	// This function moves the character
 	void Move(float moveX,float moveZ) {
