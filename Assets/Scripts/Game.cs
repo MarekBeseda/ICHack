@@ -45,7 +45,10 @@ class Game : MonoBehaviour
             MoneyDisplay.text = "Money: " + _money;
         }
 		_numZombies--;
-		ZombieDisplay.text = "Zombies alive: " + _numZombies;
+        if(ZombieDisplay != null)
+        {
+            ZombieDisplay.text = "Zombies alive: " + _numZombies;
+        }
 
     }
 
