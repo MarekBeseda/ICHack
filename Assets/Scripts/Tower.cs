@@ -6,6 +6,7 @@ using UnityEngine;
 
 class Tower : AbstractDamageTaker
 {
+    public Transform TowerHead;
     private int _level;
     private AbstractDamageTaker _target;
     public float radius;
@@ -37,6 +38,10 @@ class Tower : AbstractDamageTaker
         }
         if (_target != null)
         {
+            Vector3 diff = _target.transform.position - transform.position;
+            TowerHead.rotation
+                = Quaternion.Euler(90, 0, Mathf.Atan2(diff.z, diff.x) * Mathf.Rad2Deg -90);
+
             weapon.Fire(_target.transform.position-transform.position + _target.GetComponent<Rigidbody>().velocity * 100000000);
         }
     }

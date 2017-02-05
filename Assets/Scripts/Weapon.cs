@@ -4,16 +4,15 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour {
 
-	protected int damage;
-	public int fireSpeed;
+	public int Damage;
+	public int BulletSpeed;
 	public GameObject Bullet;
     protected Cooldown cd;
-    public float firerate;
-
+    public float CooldownTime;
 
 	// Use this for initialization
 	void Start () {
-        cd = new Cooldown(firerate); 
+        cd = new Cooldown(CooldownTime); 
 	}
 
 	// This function moves a bullet.
@@ -21,15 +20,15 @@ public class Weapon : MonoBehaviour {
         if (cd.Check())
         {
             GameObject bullet = Instantiate(Bullet);
+            bullet.GetComponent<Bullet>().Power = Damage;
             bullet.transform.position = transform.position;
-            bullet.GetComponent<Rigidbody>().velocity = VelocityVector.normalized * fireSpeed;
+            bullet.GetComponent<Rigidbody>().velocity = VelocityVector.normalized * BulletSpeed;
             cd.Trigger();
         }
     }
 		
 	// Update is called once per frame
 	void Update () {
-        cd.Update(Time.deltaTime);
-        
+        cd.Update(Time.deltaTime);   
 	}
 }

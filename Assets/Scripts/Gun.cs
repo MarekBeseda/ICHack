@@ -19,7 +19,7 @@ public class Gun : Weapon {
 
 	void Shoot(AbstractDamageTaker enemy) {
 		if (ammo > 0) {
-			enemy.TakeDamage (damage);
+			enemy.TakeDamage (Damage);
 			ammo--;
 		}
 	}

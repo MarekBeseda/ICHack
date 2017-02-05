@@ -7,7 +7,7 @@ public class Pistol : Gun {
 	// Use this for initialization
 	void Start () {
 		// Placeholder values for pistol damage and ammo.
-		damage = 0;
+		Damage = 0;
 		ammo = 1000;
 	}
 	

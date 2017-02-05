@@ -1,9 +1,13 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour {
-	public int power;
+public class Bullet : MonoBehaviour
+{
+    [HideInInspector]
+	public int Power;
+
 	// Use this for initialization
 	void Start () {
 		Destroy (this.gameObject, 5);
@@ -16,7 +20,7 @@ public class Bullet : MonoBehaviour {
 
         if (target != null && target.CompareTag("enemy")) {
 			Destroy(this.gameObject);
-			collision.gameObject.GetComponent<AbstractDamageTaker> ().TakeDamage (power);
+			collision.gameObject.GetComponent<AbstractDamageTaker> ().TakeDamage (Power);
 		}
 	}
 

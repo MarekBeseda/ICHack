@@ -6,11 +6,15 @@ class Game : MonoBehaviour
 {
     public Text MoneyDisplay;
 	public Text WaveDisplay;
+	public Text ZombieDisplay;
+
     public static Game GameInstance;
     public Player Player;
-    private ZombieSpawner _zombieSpawner;
+    public ZombieSpawner _zombieSpawner;
     public int _money;
 	public int _wave;
+
+	private int _numZombies;
 
 	private bool isPaused = false;
     void Start()
@@ -40,11 +44,15 @@ class Game : MonoBehaviour
         if(MoneyDisplay != null) {
             MoneyDisplay.text = "Money: " + _money;
         }
+		_numZombies--;
+		ZombieDisplay.text = "Zombies alive: " + _numZombies;
+
     }
 
 	public void WaveDied() {
 		_wave++;
 		WaveDisplay.text = "Wave: " + _wave;
+		_numZombies += _zombieSpawner.SpawnCount;
 	}
 
     public void StructureDestroyed()

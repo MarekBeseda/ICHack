@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 54074121781700632}
   - component: {fileID: 114395379112228666}
   - component: {fileID: 136709443956327236}
+  - component: {fileID: 114632476960139872}
   m_Layer: 9
   m_Name: Player
   m_TagString: friendly
@@ -72,6 +73,22 @@ MonoBehaviour:
   Health: 100
   speed: 10
   healthDisplay: {fileID: 0}
+  weapon: {fileID: 114632476960139872}
+--- !u!114 &114632476960139872
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1532049834209398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b96d58ae831c4c7c9b6512adefbe82b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Damage: 50
+  BulletSpeed: 50
+  Bullet: {fileID: 1264831675068790, guid: 73bac51e7c55140aba6457ba5e43bc1c, type: 2}
+  CooldownTime: 0.35
 --- !u!136 &136709443956327236
 CapsuleCollider:
   m_ObjectHideFlags: 1
