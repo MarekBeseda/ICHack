@@ -12,7 +12,6 @@ public class ZombieSpawner : MonoBehaviour {
     private float AllowedRadiusRatio {
         get { return MinRadius / Radius; }
     }
-	private int _wave;
 
     private Cooldown _waveCooldown;
 
@@ -20,7 +19,6 @@ public class ZombieSpawner : MonoBehaviour {
 	void Start ()
 	{
 		_health = 100;
-	    _wave = 0;
         _waveCooldown = new Cooldown(15f);
 	}
 	
@@ -29,7 +27,7 @@ public class ZombieSpawner : MonoBehaviour {
 	    if (_waveCooldown.UpdateAndCheck(Time.deltaTime))
 	    {
 			// Random way to get progressively stronger zombies.
-			_health = 100 + 100 * Mathf.Pow(1.015,_wave);
+			_health = 100 + (int) (100f * Mathf.Pow(1.01f, Game.GameInstance._wave));
 
 			Debug.Log (_health);
 	        SpawnWave();
@@ -38,7 +36,6 @@ public class ZombieSpawner : MonoBehaviour {
 
     private void SpawnWave()
     {
-		_wave++;
 		Game.GameInstance.WaveDied ();
 
         for (int i = 0; i < SpawnCount; i++)
