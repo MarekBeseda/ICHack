@@ -12,7 +12,8 @@ public class ZombieSpawner : MonoBehaviour {
     public GameObject Basic_Prefab;
     public GameObject Slow_Prefab;
     public GameObject Stupid_Prefab;
-    public int SpawnCount;
+    public int MaxZombies;
+    public int SpawnCount { get { return Math.Min(MaxZombies, Game.GameInstance._wave * Game.GameInstance._wave); } }
     public float MinRadius;
     public float Radius;
 
@@ -25,12 +26,12 @@ public class ZombieSpawner : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
 	{
-        _waveCooldown = new Cooldown(15f);
+        _waveCooldown = new Cooldown(10f);
 	}
 	
 	// Update is called once per frame
 	void Update () {
-	    if (Game.GameInstance.ZombieCount == 0 && _waveCooldown.UpdateAndCheck(Time.deltaTime))
+	    if (Game.GameInstance.ZombieCount <= 0 && _waveCooldown.UpdateAndCheck(Time.deltaTime))
 	    {
 	        SpawnWave();
 	    }
