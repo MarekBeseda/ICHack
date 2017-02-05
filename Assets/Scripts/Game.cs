@@ -20,6 +20,7 @@ class Game : MonoBehaviour
     void Start()
     {
         GameInstance = this;
+        GenerateTerrain();
     }
 
 	void Update() {
@@ -36,6 +37,11 @@ class Game : MonoBehaviour
 			isPaused = false;  
 		} 
 	}
+
+    public void GenerateTerrain()
+    {
+        WorldGenerator.GenerateTerrain(Terrain.activeTerrain.terrainData);
+    }
 
     /* TODO: Event system? This should be ok for now */
     public void ZombieDied()

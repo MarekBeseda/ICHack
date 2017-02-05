@@ -28,8 +28,6 @@ public class ZombieSpawner : MonoBehaviour {
 	    {
 			// Random way to get progressively stronger zombies.
 			_health = 100 + (int) (100f * Mathf.Pow(1.01f, Game.GameInstance._wave));
-
-			Debug.Log (_health);
 	        SpawnWave();
 	    }
 	}

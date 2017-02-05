@@ -56,6 +56,7 @@ public class Zombie : AbstractDamageTaker
 
         if (target != null && target.CompareTag("friendly") && attackCooldown.Check())
         {
+            Debug.Log("test");
             Attack(target);
         }
     }
