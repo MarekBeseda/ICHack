@@ -18,9 +18,12 @@ public class Bullet : MonoBehaviour
 	{
         AbstractDamageTaker target = collision.gameObject.GetComponent<AbstractDamageTaker>();
 
-        if (target != null && target.CompareTag("enemy")) {
+        if (collision.gameObject.CompareTag("enemy")) {
 			Destroy(this.gameObject);
-			collision.gameObject.GetComponent<AbstractDamageTaker> ().TakeDamage (Power);
+            if(target != null)
+            {
+			    collision.gameObject.GetComponent<AbstractDamageTaker> ().TakeDamage (Power);
+            }
 		}
 	}
 
