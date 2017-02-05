@@ -89,7 +89,7 @@ public class Player : AbstractDamageTaker {
         if(armor > 0)
         {
             int diff = Mathf.Min(armor, dmg);
-            armor -= diff;
+            Armor -= diff;
             dmg -= diff;
         }
         base.TakeDamage(dmg);
