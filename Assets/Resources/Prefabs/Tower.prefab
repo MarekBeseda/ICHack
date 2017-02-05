@@ -37,7 +37,6 @@ GameObject:
   - component: {fileID: 4628032299463762}
   - component: {fileID: 212764747054197616}
   - component: {fileID: 65693818490709004}
-  - component: {fileID: 135221404384041210}
   - component: {fileID: 208620751313105752}
   - component: {fileID: 114403879371160620}
   - component: {fileID: 114404615407186316}
@@ -117,18 +116,6 @@ MonoBehaviour:
   BulletSpeed: 50
   Bullet: {fileID: 1264831675068790, guid: 73bac51e7c55140aba6457ba5e43bc1c, type: 2}
   CooldownTime: 0.25
---- !u!135 &135221404384041210
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1228212998581128}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Radius: 5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!208 &208620751313105752
 NavMeshObstacle:
   m_ObjectHideFlags: 1
