@@ -6,9 +6,10 @@ public class Zombie : AbstractDamageTaker
     protected NavMeshAgent nma;
     protected Rigidbody body;
     public Transform target;
-	public int power;
+	private int power;
     public float attackStopTime;
     private Cooldown attackCooldown;
+
 
     // Use this for initialization
     void Start()

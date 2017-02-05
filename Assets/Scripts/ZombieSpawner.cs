@@ -7,6 +7,8 @@ public class ZombieSpawner : MonoBehaviour {
     public int SpawnCount;
     public float MinRadius;
     public float Radius;
+	public int _health;
+
     private float AllowedRadiusRatio {
         get { return MinRadius / Radius; }
     }
@@ -25,6 +27,12 @@ public class ZombieSpawner : MonoBehaviour {
 	void Update () {
 	    if (_waveCooldown.UpdateAndCheck(Time.deltaTime))
 	    {
+			// Random way to get progressively stronger zombies.
+			_health = 100 + 30 * _wave;
+			Debug.Log (_health);
+
+			Debug.Log ("Sup");
+
 	        SpawnWave();
 	    }
 	}
@@ -36,6 +44,7 @@ public class ZombieSpawner : MonoBehaviour {
         for (int i = 0; i < SpawnCount; i++)
         {
             GameObject spawnling = GameObject.Instantiate(Prefab);
+			spawnling.GetComponent<AbstractDamageTaker> ().Health = _health;
             Vector2 pos = Random.insideUnitCircle;
             if (pos.magnitude < AllowedRadiusRatio)
             {
@@ -45,6 +54,6 @@ public class ZombieSpawner : MonoBehaviour {
             spawnling.transform.position = new Vector3(pos.x, 0, pos.y) * Radius + transform.position;
         }
 
-        SpawnCount += _wave * 5;
+//        SpawnCount += _wave * 5;
     }
 }
