@@ -32,6 +32,7 @@ public class Zombie : AbstractDamageTaker
         {
             for (int i = 0; i < 2; i++)
             {
+                Game.GameInstance.ZombieCount += 2;
                 Vector2 pos = Random.insideUnitCircle;
                 if (pos.magnitude < Game.GameInstance._zombieSpawner.AllowedRadiusRatio)
                 {
@@ -42,8 +43,7 @@ public class Zombie : AbstractDamageTaker
 
                 new ZombieBuilder(ZombieSpecialization.KAMIKAZE).Generate(
                     Game.GameInstance._zombieSpawner.PrefabResolver,
-                    new Vector3(pos.x, 0, pos.y) * Game.GameInstance._zombieSpawner.Radius +
-                    Game.GameInstance.Player.transform.position);
+                    Game.GameInstance.GetRandomZombieViablePosition());
             }
 
             Destroy(target.gameObject);
@@ -98,7 +98,6 @@ public class Zombie : AbstractDamageTaker
         AbstractDamageTaker target = collision.gameObject.GetComponent<AbstractDamageTaker>();
         if (target != null && target.CompareTag("friendly") && attackCooldown.Check())
         {
-            Debug.Log("test");
             Attack(target);
         }
     }

@@ -5,8 +5,8 @@ using UnityEngine.UI;
 class Game : MonoBehaviour
 {
     public Text MoneyDisplay;
-	public Text WaveDisplay;
-	public Text ZombieDisplay;
+    public Text WaveDisplay;
+    public Text ZombieDisplay;
     public static Game GameInstance;
     public Player Player;
     public ZombieSpawner _zombieSpawner;
@@ -43,10 +43,7 @@ class Game : MonoBehaviour
 
     public int ZombieCount
     {
-        get
-        {
-            return _zombieCount;
-        }
+        get { return _zombieCount; }
         set
         {
             _zombieCount = value;
@@ -96,5 +93,19 @@ class Game : MonoBehaviour
 
     public void StructureDestroyed()
     {
+    }
+
+    public Vector3 GetRandomZombieViablePosition()
+    {
+        Vector2 pos2 = Random.insideUnitCircle;
+        pos2.Normalize();
+        var coefficient = (Game.GameInstance._zombieSpawner.MinRadius
+                 + Random.value * (Game.GameInstance._zombieSpawner.Radius - Game.GameInstance._zombieSpawner.MinRadius));
+
+        pos2 *= coefficient;
+        Vector3 pos3 = new Vector3(pos2.x, 1, pos2.y);
+        pos3 += Game.GameInstance.Player.transform.position;
+        
+        return pos3;
     }
 }

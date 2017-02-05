@@ -27,8 +27,7 @@ public class ZombieSpawner : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {
-        Random.InitState(4324335);
-        _waveCooldown = new Cooldown(40f);
+        _waveCooldown = new Cooldown(45f);
 	}
 	
 	// Update is called once per frame
@@ -45,14 +44,8 @@ public class ZombieSpawner : MonoBehaviour {
 
         for (int i = 0; i < SpawnCount; i++)
         {
-            Vector2 pos = Random.insideUnitCircle;
-            if (pos.magnitude < AllowedRadiusRatio)
-            {
-                pos.Normalize();
-                pos.Scale(new Vector2(AllowedRadiusRatio, AllowedRadiusRatio));
-            }
-
-            new ZombieBuilder(ZombieBuilder.WeightedRandomSpecialization()).Generate(PrefabResolver, new Vector3(pos.x, 0, pos.y) * Radius + Game.GameInstance.Player.transform.position);
+            new ZombieBuilder(ZombieBuilder.WeightedRandomSpecialization())
+                .Generate(PrefabResolver, Game.GameInstance.GetRandomZombieViablePosition());
         }
     }
 

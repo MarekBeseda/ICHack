@@ -24,9 +24,10 @@ public class WorldGenerator : MonoBehaviour{
             Vector2 pos = Random.insideUnitCircle.normalized * 300 * Mathf.Pow(Random.value, 1F/3.5F);
 
             Tree.transform.position = new Vector3(pos.x, 1, pos.y) ;
+            Tree.transform.rotation = Quaternion.Euler(90, 0, Random.value * 360);
             count++;
         }
-        Debug.Log(count);
+
         data.SetAlphamaps(0, 0, map);
     }
 }
