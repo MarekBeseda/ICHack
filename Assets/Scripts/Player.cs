@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class Player : AbstractDamageTaker {
 
+	private bool recoveringStamina;
+	public float stamina;
 	public float baseSpeed;
 	private Rigidbody player;
     public Image healthDisplay;
@@ -12,8 +14,8 @@ public class Player : AbstractDamageTaker {
 
 	// Use this for initialization
     void Start () {
-		player = GetComponent<Rigidbody>();
-    }
+		player = GetComponent<Rigidbody> ();
+	}
 
 
 
@@ -32,8 +34,19 @@ public class Player : AbstractDamageTaker {
 
 		float speed = baseSpeed;
 
-		if (Input.GetKey (KeyCode.LeftShift)) {
+		if (stamina <= 0) {
+			recoveringStamina = true;
+		}
+
+		if (stamina >= 10 && recoveringStamina) {
+			recoveringStamina = false;
+		}
+
+		if (Input.GetKey (KeyCode.LeftShift) && !recoveringStamina) {
 			speed *= 2;
+			stamina -= (2 * Time.deltaTime);
+		} else if (stamina < 10) {
+			stamina += Time.deltaTime;
 		}
 
 		Move (moveHorizontal, moveVertical, speed);
