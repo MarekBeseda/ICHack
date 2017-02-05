@@ -101,6 +101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Health: 500
   target: {fileID: 0}
+  reward: 25
   power: 25
   attackStopTime: 0.25
 --- !u!136 &136131853925458050

@@ -101,7 +101,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Health: 100
   target: {fileID: 0}
-  power: 5
+  reward: 10
+  power: 10
   attackStopTime: 0.5
 --- !u!136 &136131853925458050
 CapsuleCollider:
