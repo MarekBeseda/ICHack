@@ -26,12 +26,12 @@ public class ZombieSpawner : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
 	{
-        _waveCooldown = new Cooldown(10f);
+        _waveCooldown = new Cooldown(40f);
 	}
 	
 	// Update is called once per frame
 	void Update () {
-	    if (Game.GameInstance.ZombieCount <= 0 && _waveCooldown.UpdateAndCheck(Time.deltaTime))
+	    if (_waveCooldown.UpdateAndCheck(Time.deltaTime))
 	    {
 	        SpawnWave();
 	    }
@@ -50,7 +50,7 @@ public class ZombieSpawner : MonoBehaviour {
                 pos.Scale(new Vector2(AllowedRadiusRatio, AllowedRadiusRatio));
             }
 
-            new ZombieBuilder(ZombieBuilder.WeightedRandomSpecialization()).Generate(PrefabResolver, new Vector3(pos.x, 0, pos.y) * Radius + transform.position);
+            new ZombieBuilder(ZombieBuilder.WeightedRandomSpecialization()).Generate(PrefabResolver, new Vector3(pos.x, 0, pos.y) * Radius + Game.GameInstance.Player.transform.position);
         }
     }
 
