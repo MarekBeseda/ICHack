@@ -54,7 +54,7 @@ public class Zombie : AbstractDamageTaker
     void OnCollisionEnter(Collision collision)
     {
         AbstractDamageTaker target = collision.gameObject.GetComponent<AbstractDamageTaker>();
-
+        Debug.Log("HIT");
         if (target != null && target.CompareTag("friendly") && attackCooldown.Check())
         {
             Debug.Log("test");

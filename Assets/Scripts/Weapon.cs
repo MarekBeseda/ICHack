@@ -19,6 +19,8 @@ public class Weapon : MonoBehaviour {
 	public void Fire(Vector3 VelocityVector){
         if (cd.Check())
         {
+            if (GetComponent<AudioSource>() != null) GetComponent<AudioSource>().Play();
+
             GameObject bullet = Instantiate(Bullet);
             bullet.GetComponent<Bullet>().Power = Damage;
             bullet.transform.position = transform.position;

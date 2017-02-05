@@ -13,7 +13,7 @@ public class ZombieSpawner : MonoBehaviour {
     public GameObject Slow_Prefab;
     public GameObject Stupid_Prefab;
     public int MaxZombies;
-    public int SpawnCount { get { return Math.Min(MaxZombies, Game.GameInstance._wave * Game.GameInstance._wave); } }
+    public int SpawnCount { get { return Math.Min(MaxZombies, (Game.GameInstance.Wave + 1) * (Game.GameInstance.Wave + 1)); } }
     public float MinRadius;
     public float Radius;
 

@@ -18,7 +18,7 @@ class ZombieBuilder
     {
         GameObject spawnling = GameObject.Instantiate(prefabResolver.Invoke(_specialization));
         spawnling.GetComponent<AbstractDamageTaker>().Health *= 1 + (zombieRandom.Next(1, 20) / 10);
-        spawnling.GetComponent<AbstractDamageTaker>().Health += (int)(100f * Mathf.Pow(1.01f, Game.GameInstance._wave));
+        spawnling.GetComponent<AbstractDamageTaker>().Health += (int)(100f * Mathf.Pow(1.01f, Game.GameInstance.Wave));
         spawnling.transform.position = position;
     }
 
@@ -28,7 +28,7 @@ class ZombieBuilder
     {
         int x = zombieRandom.Next(30);
 
-        if (Game.GameInstance._wave < 7)
+        if (Game.GameInstance.Wave < 7)
         {
             if (x < 1) return ZombieSpecialization.BOSS;
             if (x < 4) return ZombieSpecialization.FAST;
@@ -38,7 +38,7 @@ class ZombieBuilder
             if (x < 25) return ZombieSpecialization.SLOW;
             if (x < 30) return ZombieSpecialization.STUPID;
         }
-        else if (Game.GameInstance._wave < 14)
+        else if (Game.GameInstance.Wave < 14)
         {
             if (x < 2) return ZombieSpecialization.BOSS;
             if (x < 6) return ZombieSpecialization.FAST;
@@ -48,7 +48,7 @@ class ZombieBuilder
             if (x < 28) return ZombieSpecialization.SLOW;
             if (x < 30) return ZombieSpecialization.STUPID;
         }
-        else if (Game.GameInstance._wave < 20)
+        else if (Game.GameInstance.Wave < 20)
         {
             if (x < 3) return ZombieSpecialization.BOSS;
             if (x < 7) return ZombieSpecialization.FAST;
