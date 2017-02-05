@@ -51,14 +51,17 @@ public class Zombie : AbstractDamageTaker
         Game.GameInstance.ZombieDied(reward);
     }
 
-    void OnCollisionEnter(Collision collision)
+    void OnCollisionStay(Collision collision)
     {
-        AbstractDamageTaker target = collision.gameObject.GetComponent<AbstractDamageTaker>();
-
-        if (target != null && target.CompareTag("friendly") && attackCooldown.Check())
+        if (attackCooldown.Check())
         {
-            Debug.Log("test");
-            Attack(target);
+            AbstractDamageTaker target = collision.gameObject.GetComponent<AbstractDamageTaker>();
+
+            if (target != null && target.CompareTag("friendly") && attackCooldown.Check())
+            {
+                Debug.Log("test");
+                Attack(target);
+            }
         }
     }
 
