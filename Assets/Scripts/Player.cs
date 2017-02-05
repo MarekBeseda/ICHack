@@ -18,21 +18,15 @@ public class Player : AbstractDamageTaker {
     private int armor = 0;
     public int Armor { get { return armor; } set
         {
-            armor = Mathf.Clamp(value, 0, 100);
-            armorDisplay.transform.localScale = new Vector3((float)armor / 100F, 1, 1);
-            if (armor <= 0)
-            {
-                armorDisplay.transform.parent.gameObject.SetActive(false);
-            }
-            else
-            {
-                armorDisplay.transform.parent.gameObject.SetActive(true);
-            }
+			armor = Mathf.Clamp(value, 0, 100);
+			armorDisplay.transform.parent.gameObject.SetActive(armor > 0);
+			armorDisplay.transform.localScale = new Vector3((float)armor / 100F, 1, 1);
         } }
 
 	// Use this for initialization
     void Start () {
 		player = GetComponent<Rigidbody> ();
+		armorDisplay.transform.parent.gameObject.SetActive(false);
 	}
 
 
@@ -68,7 +62,8 @@ public class Player : AbstractDamageTaker {
 		}
 
 		Move (moveHorizontal, moveVertical, speed);
-        healthDisplay.transform.localScale = new Vector3((float)Health / 100F, 1, 1);
+        
+		healthDisplay.transform.localScale = new Vector3((float)Health / 100F, 1, 1);
 		staminaDisplay.transform.localScale = new Vector3(stamina / 10F, 1, 1);
 
         if (Input.GetMouseButtonDown(0))
