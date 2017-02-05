@@ -7,7 +7,6 @@ class Game : MonoBehaviour
     public Text MoneyDisplay;
 	public Text WaveDisplay;
 	public Text ZombieDisplay;
-
     public static Game GameInstance;
     public Player Player;
     public ZombieSpawner _zombieSpawner;
@@ -20,6 +19,7 @@ class Game : MonoBehaviour
     void Start()
     {
         GameInstance = this;
+        GetComponent< WorldGenerator>().GenerateTerrain(Terrain.activeTerrain.terrainData);
     }
 
 	void Update() {
