@@ -29,12 +29,9 @@ public class ZombieSpawner : MonoBehaviour {
 	    if (_waveCooldown.UpdateAndCheck(Time.deltaTime))
 	    {
 			// Random way to get progressively stronger zombies.
-			_health = 100 + 30 * _wave;
+			_health = 100 + 100 * Mathf.Pow(1.015,_wave);
 
 			Debug.Log (_health);
-
-			Debug.Log ("Sup");
-
 	        SpawnWave();
 	    }
 	}
