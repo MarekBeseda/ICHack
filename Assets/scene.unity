@@ -669,7 +669,6 @@ GameObject:
   m_PrefabParentObject: {fileID: 1532049834209398, guid: 9219b0a08219047c58ad153fcaf2db0b,
     type: 2}
   m_PrefabInternal: {fileID: 1901268603}
-<<<<<<< HEAD
 --- !u!1 &1192137665
 GameObject:
   m_ObjectHideFlags: 0
@@ -744,7 +743,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1192137665}
-=======
 --- !u!43 &1035076054
 Mesh:
   m_ObjectHideFlags: 0
@@ -873,7 +871,6 @@ Mesh:
   m_BakedConvexCollisionMesh: 
   m_BakedTriangleCollisionMesh: 
   m_MeshOptimized: 0
->>>>>>> 29c5ef6db11ea55e0c59d93ab842a090daf22dbd
 --- !u!1 &1293030222
 GameObject:
   m_ObjectHideFlags: 0
