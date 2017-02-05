@@ -1,24 +1,25 @@
 ﻿using UnityEngine;
+using UnityEngine.EventSystems;
 using System.Collections;
+using System.Linq;
 using System.Collections.Generic;
 
-[System.Serializable]
-public class Item {
-	public string name;
-	public Sprite icon;
-	public int price;
-}
 
 public class Shop : MonoBehaviour
 {
+	public GameObject contentPanel;
+    private Buildable selected;
+    public Color Valid = Color.green, Invalid = Color.red;
 
-	public List<Item> items;
-	public Transform contentPanel;
-
-	public void sell(Item item, Player player) {
-		Game.GameInstance._money -= item.price;
-		UpdateDisplay ();
-	}
+    public void onClick(string data)
+    {
+        Buildable prefab = Resources.Load<GameObject>("Prefabs\\Buildable\\" + data).GetComponent<Buildable>();
+        if (prefab.Price <= Game.GameInstance._money)
+        {
+            selected = Instantiate(prefab);
+            contentPanel.SetActive(false);
+        }
+    }
 
 	// Use this for initialization
 	void Start ()
@@ -29,15 +30,44 @@ public class Shop : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-		UpdateDisplay ();
-	}
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            contentPanel.SetActive(!contentPanel.active);
+        }
 
-	private void UpdateDisplay() {
-		/*
-			1. Check if player has X money for an item I.
-			2. Display item on the shop panel.
-			3. Remove any items above the player's budget.
-		*/
+        if (Input.GetMouseButtonDown(1))
+        {
+            contentPanel.SetActive(false);
+            if (selected != null)
+            {
+                Destroy(selected.gameObject);
+            }
+            selected = null;
+        }
+        if (selected != null)
+        {
+            Vector3 mousepos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            float x = Mathf.Floor(mousepos.x + 1.5f);
+            float z = Mathf.Floor(mousepos.z + 1.5f);
+            selected.transform.position = new Vector3(x - x % 3, 2, z - z % 3);
+            RaycastHit hit;
+
+            if (Physics.BoxCast(selected.transform.position - new Vector3(0,10,0), new Vector3(1.4F, 1.4F, 1.4F), Vector3.up)) 
+            {
+                selected.GetComponent<SpriteRenderer>().color = Invalid;
+            }
+            else
+            {
+                selected.GetComponent<SpriteRenderer>().color = Valid;
+                if (Input.GetMouseButtonDown(0))
+                {
+                    Game.GameInstance._money -= selected.Price;
+                    GameObject tower = Instantiate(selected.Prefab);
+                    tower.transform.position = new Vector3(selected.transform.position.x, 1, selected.transform.position.z);
+                    Destroy(selected.gameObject);
+                }
+            }
+        }
 	}
 }
 
