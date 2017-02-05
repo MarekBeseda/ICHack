@@ -6,6 +6,7 @@ public class Zombie : AbstractDamageTaker
     protected NavMeshAgent nma;
     protected Rigidbody body;
     public Transform target;
+    public int reward;
 	public int power;
     public float attackStopTime;
     private Cooldown attackCooldown;
@@ -47,7 +48,7 @@ public class Zombie : AbstractDamageTaker
 
     void OnDestroy()
     {
-        Game.GameInstance.ZombieDied();
+        Game.GameInstance.ZombieDied(reward);
     }
 
     void OnCollisionEnter(Collision collision)

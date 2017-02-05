@@ -20,7 +20,6 @@ class Game : MonoBehaviour
     void Start()
     {
         GameInstance = this;
-        GenerateTerrain();
     }
 
 	void Update() {
@@ -38,15 +37,9 @@ class Game : MonoBehaviour
 		} 
 	}
 
-    public void GenerateTerrain()
+    public void ZombieDied(int value)
     {
-        WorldGenerator.GenerateTerrain(Terrain.activeTerrain.terrainData);
-    }
-
-    /* TODO: Event system? This should be ok for now */
-    public void ZombieDied()
-    {
-        _money += 5;
+        _money += value;
         if(MoneyDisplay != null) {
             MoneyDisplay.text = "Money: " + _money;
         }
