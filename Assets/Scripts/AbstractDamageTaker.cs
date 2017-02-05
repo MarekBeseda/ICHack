@@ -8,7 +8,7 @@ public abstract class AbstractDamageTaker : MonoBehaviour
 {
     public int Health;
 
-    public void TakeDamage(int dmg)
+    public virtual void TakeDamage(int dmg)
     {
         Health -= dmg;
 
