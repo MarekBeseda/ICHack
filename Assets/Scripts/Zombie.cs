@@ -7,7 +7,7 @@ public class Zombie : AbstractDamageTaker
     protected Rigidbody body;
     public Transform target;
     public int reward;
-	public int power;
+    public int power;
     public float attackStopTime;
     private Cooldown attackCooldown;
 
@@ -34,7 +34,7 @@ public class Zombie : AbstractDamageTaker
             nma.Resume();
         }
 
-        if(target == null)
+        if (target == null)
         {
             target = getTarget();
         }
@@ -42,7 +42,8 @@ public class Zombie : AbstractDamageTaker
     }
 
 
-    public Transform getTarget() {
+    public Transform getTarget()
+    {
         return Game.GameInstance.Player.transform;
     }
 
@@ -56,18 +57,14 @@ public class Zombie : AbstractDamageTaker
         AbstractDamageTaker target = collision.gameObject.GetComponent<AbstractDamageTaker>();
         if (target != null && target.CompareTag("friendly") && attackCooldown.Check())
         {
-            AbstractDamageTaker target = collision.gameObject.GetComponent<AbstractDamageTaker>();
-
-            if (target != null && target.CompareTag("friendly") && attackCooldown.Check())
-            {
-                Debug.Log("test");
-                Attack(target);
-            }
+            Debug.Log("test");
+            Attack(target);
         }
     }
 
-	void Attack(AbstractDamageTaker player) {
+    void Attack(AbstractDamageTaker player)
+    {
         attackCooldown.Trigger();
-		player.TakeDamage (power);
-	}
+        player.TakeDamage(power);
+    }
 }
