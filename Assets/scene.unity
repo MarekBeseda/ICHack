@@ -644,7 +644,7 @@ MonoBehaviour:
     type: 2}
   Stupid_Prefab: {fileID: 1874768110233150, guid: c37391a5c0fbf194888d36955702a9b1,
     type: 2}
-  SpawnCount: 25
+  MaxZombies: 30
   MinRadius: 30
   Radius: 150
 --- !u!4 &226456880
@@ -1544,7 +1544,7 @@ MonoBehaviour:
   m_Text: 'Beautiful Basic Pew Pew Tower
 
 
-    $300'
+    $100'
 --- !u!222 &666910758
 CanvasRenderer:
   m_ObjectHideFlags: 0
