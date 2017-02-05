@@ -14,7 +14,7 @@ class Game : MonoBehaviour
     public int _money;
 	public int _wave;
 
-	private int _numZombies;
+	public int ZombieCount;
 
 	private bool isPaused = false;
     void Start()
@@ -43,10 +43,10 @@ class Game : MonoBehaviour
         if(MoneyDisplay != null) {
             MoneyDisplay.text = "Money: " + _money;
         }
-		_numZombies--;
+		ZombieCount--;
         if(ZombieDisplay != null)
         {
-            ZombieDisplay.text = "Zombies alive: " + _numZombies;
+            ZombieDisplay.text = "Zombies alive: " + ZombieCount;
         }
 
     }
@@ -54,7 +54,7 @@ class Game : MonoBehaviour
 	public void WaveDied() {
 		_wave++;
 		WaveDisplay.text = "Wave: " + _wave;
-		_numZombies += _zombieSpawner.SpawnCount;
+        ZombieCount += _zombieSpawner.SpawnCount;
 	}
 
     public void StructureDestroyed()
