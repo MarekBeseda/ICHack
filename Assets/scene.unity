@@ -644,6 +644,8 @@ MonoBehaviour:
     type: 2}
   Stupid_Prefab: {fileID: 1874768110233150, guid: c37391a5c0fbf194888d36955702a9b1,
     type: 2}
+  Kamikaze_Prefab: {fileID: 1874768110233150, guid: 6a027379cb277aa4e8c89b06226e9f8b,
+    type: 2}
   MaxZombies: 30
   MinRadius: 30
   Radius: 150

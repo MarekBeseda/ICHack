@@ -12,6 +12,7 @@ public class ZombieSpawner : MonoBehaviour {
     public GameObject Basic_Prefab;
     public GameObject Slow_Prefab;
     public GameObject Stupid_Prefab;
+    public GameObject Kamikaze_Prefab;
     public int MaxZombies;
     public int SpawnCount { get { return Math.Min(MaxZombies, (Game.GameInstance.Wave + 1) * (Game.GameInstance.Wave + 1)); } }
     public float MinRadius;
@@ -72,6 +73,8 @@ public class ZombieSpawner : MonoBehaviour {
                 return Slow_Prefab;
             case ZombieSpecialization.STUPID:
                 return Stupid_Prefab;
+            case ZombieSpecialization.KAMIKAZE:
+                return Kamikaze_Prefab;
             default:
                 throw new ArgumentOutOfRangeException("oops wrong zombie type, you're probably a stupid zombie if you caused this to break :0");
         }

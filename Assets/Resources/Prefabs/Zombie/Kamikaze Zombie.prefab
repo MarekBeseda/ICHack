@@ -40,7 +40,7 @@ GameObject:
   - component: {fileID: 114852980703764862}
   - component: {fileID: 54449983503454568}
   m_Layer: 8
-  m_Name: Stupid Zombie
+  m_Name: Kamikaze Zombie
   m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -99,10 +99,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3c672863338a81418e52f92a1bda296, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 100
+  Health: 50
   target: {fileID: 0}
-  reward: 2
-  power: 5
+  reward: 25
+  power: 0
   attackStopTime: 0.5
 --- !u!136 &136131853925458050
 CapsuleCollider:
@@ -125,7 +125,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 1874768110233150}
   m_Enabled: 1
   m_Radius: 0.4
-  m_Speed: 3.5
+  m_Speed: 5
   m_Acceleration: 10
   avoidancePriority: 50
   m_AngularSpeed: 180
@@ -168,7 +168,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 4d62268de847dd64782ba6e2be4c88d6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b760b381464d50a4097ee58c50e78f0d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

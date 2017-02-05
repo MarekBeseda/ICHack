@@ -11,5 +11,6 @@ enum ZombieSpecialization
     FIGHTER,
     BASIC,
     SLOW,
-    STUPID
+    STUPID,
+    KAMIKAZE
 }

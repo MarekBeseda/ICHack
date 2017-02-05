@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.AI;
 
 public class Zombie : AbstractDamageTaker
@@ -9,6 +10,7 @@ public class Zombie : AbstractDamageTaker
     public int reward;
     public int power;
     public float attackStopTime;
+    public bool Kamikaze;
     private Cooldown attackCooldown;
 
 
@@ -24,6 +26,12 @@ public class Zombie : AbstractDamageTaker
     void Update()
     {
         attackCooldown.Update(Time.deltaTime);
+
+        if (Kamikaze && target != null && (target.transform.position - transform.position).sqrMagnitude < 8)
+        {
+            Destroy(target.gameObject);
+            Destroy(this.gameObject);
+        }
 
         if (!attackCooldown.Check())
         {
@@ -44,7 +52,16 @@ public class Zombie : AbstractDamageTaker
 
     public Transform getTarget()
     {
-        return Game.GameInstance.Player.transform;
+        if (Kamikaze)
+        {
+            RaycastHit hit;
+            Physics.Raycast(new Ray(this.transform.position, Game.GameInstance.Player.transform.position - this.transform.position), out hit, Mathf.Infinity, LayerMask.GetMask("Friendly"));
+            return hit.transform;
+        }
+        else
+        {
+            return Game.GameInstance.Player.transform;
+        }
     }
 
     void OnDestroy()
