@@ -18,7 +18,7 @@ public class ZombieSpawner : MonoBehaviour {
     public float MinRadius;
     public float Radius;
 
-    private float AllowedRadiusRatio {
+    public float AllowedRadiusRatio {
         get { return MinRadius / Radius; }
     }
 
@@ -26,7 +26,8 @@ public class ZombieSpawner : MonoBehaviour {
 
 	// Use this for initialization
 	void Start ()
-	{
+    {
+        Random.InitState(4324335);
         _waveCooldown = new Cooldown(40f);
 	}
 	
@@ -55,7 +56,7 @@ public class ZombieSpawner : MonoBehaviour {
         }
     }
 
-    private GameObject PrefabResolver(ZombieSpecialization specialization)
+    public GameObject PrefabResolver(ZombieSpecialization specialization)
     {
         switch (specialization)
         {

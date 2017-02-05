@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
 using UnityEngine.AI;
+using Random = UnityEngine.Random;
 
 public class Zombie : AbstractDamageTaker
 {
@@ -29,6 +30,22 @@ public class Zombie : AbstractDamageTaker
 
         if (Kamikaze && target != null && (target.transform.position - transform.position).sqrMagnitude < 8)
         {
+            for (int i = 0; i < 2; i++)
+            {
+                Vector2 pos = Random.insideUnitCircle;
+                if (pos.magnitude < Game.GameInstance._zombieSpawner.AllowedRadiusRatio)
+                {
+                    pos.Normalize();
+                    pos.Scale(new Vector2(Game.GameInstance._zombieSpawner.AllowedRadiusRatio,
+                        Game.GameInstance._zombieSpawner.AllowedRadiusRatio));
+                }
+
+                new ZombieBuilder(ZombieSpecialization.KAMIKAZE).Generate(
+                    Game.GameInstance._zombieSpawner.PrefabResolver,
+                    new Vector3(pos.x, 0, pos.y) * Game.GameInstance._zombieSpawner.Radius +
+                    Game.GameInstance.Player.transform.position);
+            }
+
             Destroy(target.gameObject);
             Destroy(this.gameObject);
         }
@@ -59,6 +76,10 @@ public class Zombie : AbstractDamageTaker
         {
             RaycastHit hit;
             Physics.Raycast(new Ray(this.transform.position, Game.GameInstance.Player.transform.position - this.transform.position), out hit, Mathf.Infinity, LayerMask.GetMask("Friendly"));
+
+            if (hit.transform.gameObject.GetComponent<Wall>() != null
+                || hit.transform.gameObject.GetComponent<Tower>() != null) this.nma.speed *= 5;
+
             return hit.transform;
         }
         else

@@ -63,7 +63,7 @@ class Game : MonoBehaviour
     {
         Money = 0;
         GameInstance = this;
-        GetComponent< WorldGenerator>().GenerateTerrain(Terrain.activeTerrain.terrainData);
+        GetComponent<WorldGenerator>().GenerateTerrain(Terrain.activeTerrain.terrainData);
     }
 
     void Update()
