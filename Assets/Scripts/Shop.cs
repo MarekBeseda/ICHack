@@ -10,8 +10,19 @@ public class Shop : MonoBehaviour
 	public GameObject contentPanel;
     private Buildable selected;
     public Color Valid = Color.green, Invalid = Color.red;
+    public int ArmorCost = 25;
+    public int ArmorPerBuy = 100;
 
-    public void onClick(string data)
+    public void onItem(string data)
+    {
+        if(data == "armor" && Game.GameInstance._money >= ArmorCost)
+        {
+            Game.GameInstance.Player.Armor += ArmorPerBuy;
+            Game.GameInstance._money -= ArmorCost;
+        }
+    }
+
+    public void onBuild(string data)
     {
         Buildable prefab = Resources.Load<GameObject>("Prefabs\\Buildable\\" + data).GetComponent<Buildable>();
         if (prefab.Price <= Game.GameInstance._money)
@@ -32,7 +43,7 @@ public class Shop : MonoBehaviour
 	{
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            contentPanel.SetActive(!contentPanel.active);
+            contentPanel.SetActive(!contentPanel.activeSelf);
         }
 
         if (Input.GetMouseButtonDown(1))
@@ -41,8 +52,8 @@ public class Shop : MonoBehaviour
             if (selected != null)
             {
                 Destroy(selected.gameObject);
+                selected = null;
             }
-            selected = null;
         }
         if (selected != null)
         {
@@ -50,8 +61,7 @@ public class Shop : MonoBehaviour
             float x = Mathf.Floor(mousepos.x + 1.5f);
             float z = Mathf.Floor(mousepos.z + 1.5f);
             selected.transform.position = new Vector3(x - x % 3, 2, z - z % 3);
-            RaycastHit hit;
-
+            
             if (Physics.BoxCast(selected.transform.position - new Vector3(0,10,0), new Vector3(1.4F, 1.4F, 1.4F), Vector3.up)) 
             {
                 selected.GetComponent<SpriteRenderer>().color = Invalid;
@@ -70,4 +80,3 @@ public class Shop : MonoBehaviour
         }
 	}
 }
-

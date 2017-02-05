@@ -11,7 +11,22 @@ public class Player : AbstractDamageTaker {
 	private Rigidbody player;
     public Image healthDisplay;
 	public Image staminaDisplay;
+    public Image armorDisplay;
     public Weapon weapon;
+    private int armor = 0;
+    public int Armor { get { return armor; } set
+        {
+            armor = Mathf.Clamp(value, 0, 100);
+            armorDisplay.transform.localScale = new Vector3((float)armor / 100F, 1, 1);
+            if (armor <= 0)
+            {
+                armorDisplay.transform.parent.gameObject.SetActive(false);
+            }
+            else
+            {
+                armorDisplay.transform.parent.gameObject.SetActive(true);
+            }
+        } }
 
 	// Use this for initialization
     void Start () {
@@ -65,5 +80,16 @@ public class Player : AbstractDamageTaker {
 
         Vector3 dir = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
         transform.rotation = Quaternion.Euler(90, 0, Mathf.Atan2(dir.z, dir.x) * Mathf.Rad2Deg -90);
+    }
+
+    public override void TakeDamage(int dmg)
+    {
+        if(armor > 0)
+        {
+            int diff = Mathf.Min(armor, dmg);
+            armor -= diff;
+            dmg -= diff;
+        }
+        base.TakeDamage(dmg);
     }
 }
