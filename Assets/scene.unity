@@ -743,7 +743,7 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1192137665}
---- !u!43 &1035076054
+--- !u!43 &1226222496
 Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -1011,7 +1011,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1376315491}
-  m_Mesh: {fileID: 1035076054}
+  m_Mesh: {fileID: 1226222496}
 --- !u!4 &1376315496
 Transform:
   m_ObjectHideFlags: 0
@@ -1863,7 +1863,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4761643815924016, guid: 9219b0a08219047c58ad153fcaf2db0b, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 6.34
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4761643815924016, guid: 9219b0a08219047c58ad153fcaf2db0b, type: 2}
       propertyPath: m_LocalPosition.y
