@@ -10,6 +10,7 @@ public class Player : AbstractDamageTaker {
 	public float baseSpeed;
 	private Rigidbody player;
     public Image healthDisplay;
+	public Image staminaDisplay;
     public Weapon weapon;
 
 	// Use this for initialization
@@ -51,6 +52,7 @@ public class Player : AbstractDamageTaker {
 
 		Move (moveHorizontal, moveVertical, speed);
         healthDisplay.transform.localScale = new Vector3((float)Health / 100F, 1, 1);
+		staminaDisplay.transform.localScale = new Vector3(stamina / 10F, 1, 1);
 
         if (Input.GetMouseButtonDown(0))
         {
