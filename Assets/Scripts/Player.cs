@@ -20,14 +20,7 @@ public class Player : AbstractDamageTaker {
         {
             armor = Mathf.Clamp(value, 0, 100);
             armorDisplay.transform.localScale = new Vector3((float)armor / 100F, 1, 1);
-            if (armor <= 0)
-            {
-                armorDisplay.transform.parent.gameObject.SetActive(false);
-            }
-            else
-            {
-                armorDisplay.transform.parent.gameObject.SetActive(true);
-            }
+			armorDisplay.transform.parent.gameObject.SetActive(armor > 0);
         } }
 
 	// Use this for initialization
