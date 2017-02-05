@@ -19,6 +19,7 @@ public class ZombieSpawner : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
 	{
+		_health = 100;
 	    _wave = 0;
         _waveCooldown = new Cooldown(15f);
 	}
@@ -29,6 +30,7 @@ public class ZombieSpawner : MonoBehaviour {
 	    {
 			// Random way to get progressively stronger zombies.
 			_health = 100 + 30 * _wave;
+
 			Debug.Log (_health);
 
 			Debug.Log ("Sup");
@@ -39,6 +41,7 @@ public class ZombieSpawner : MonoBehaviour {
 
     private void SpawnWave()
     {
+		_wave++;
 		Game.GameInstance.WaveDied ();
 
         for (int i = 0; i < SpawnCount; i++)
