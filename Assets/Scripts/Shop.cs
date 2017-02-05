@@ -15,17 +15,17 @@ public class Shop : MonoBehaviour
 
     public void onItem(string data)
     {
-        if(data == "armor" && Game.GameInstance._money >= ArmorCost)
+        if(data == "armor" && Game.GameInstance.Money >= ArmorCost)
         {
             Game.GameInstance.Player.Armor += ArmorPerBuy;
-            Game.GameInstance._money -= ArmorCost;
+            Game.GameInstance.Money -= ArmorCost;
         }
     }
 
     public void onBuild(string data)
     {
         Buildable prefab = Resources.Load<GameObject>("Prefabs\\Buildable\\" + data).GetComponent<Buildable>();
-        if (prefab.Price <= Game.GameInstance._money)
+        if (prefab.Price <= Game.GameInstance.Money)
         {
             selected = Instantiate(prefab);
             contentPanel.SetActive(false);
@@ -71,7 +71,7 @@ public class Shop : MonoBehaviour
                 selected.GetComponent<SpriteRenderer>().color = Valid;
                 if (Input.GetMouseButtonDown(0))
                 {
-                    Game.GameInstance._money -= selected.Price;
+                    Game.GameInstance.Money -= selected.Price;
                     GameObject tower = Instantiate(selected.Prefab);
                     tower.transform.position = new Vector3(selected.transform.position.x, 1, selected.transform.position.z);
                     Destroy(selected.gameObject);
