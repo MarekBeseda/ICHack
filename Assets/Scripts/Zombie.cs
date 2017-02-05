@@ -46,12 +46,15 @@ public class Zombie : AbstractDamageTaker
         {
             target = getTarget();
         }
-        nma.SetDestination(target.position);
+
+        if (target != null) nma.SetDestination(target.position);
     }
 
 
     public Transform getTarget()
     {
+        if (Game.GameInstance.Player == null) return null;
+
         if (Kamikaze)
         {
             RaycastHit hit;
