@@ -53,7 +53,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Price: 100
-  prefab: {fileID: 1983594875083986, guid: 0b20d2861d6a8e1458fe2be9a2fb1ce7, type: 2}
+  Prefab: {fileID: 1228212998581128, guid: 0b20d2861d6a8e1458fe2be9a2fb1ce7, type: 2}
 --- !u!212 &212259823680970586
 SpriteRenderer:
   m_ObjectHideFlags: 1
