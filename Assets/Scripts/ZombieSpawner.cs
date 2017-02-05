@@ -1,9 +1,17 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class ZombieSpawner : MonoBehaviour {
-    public GameObject Prefab;
+    public GameObject Boss_Prefab;
+    public GameObject Fast_Prefab;
+    public GameObject Tank_Prefab;
+    public GameObject Fighter_Prefab;
+    public GameObject Basic_Prefab;
+    public GameObject Slow_Prefab;
+    public GameObject Stupid_Prefab;
     public int SpawnCount;
     public float MinRadius;
     public float Radius;
@@ -40,17 +48,36 @@ public class ZombieSpawner : MonoBehaviour {
 
         for (int i = 0; i < SpawnCount; i++)
         {
-            GameObject spawnling = GameObject.Instantiate(Prefab);
-			spawnling.GetComponent<AbstractDamageTaker> ().Health = _health;
             Vector2 pos = Random.insideUnitCircle;
             if (pos.magnitude < AllowedRadiusRatio)
             {
                 pos.Normalize();
                 pos.Scale(new Vector2(AllowedRadiusRatio, AllowedRadiusRatio));
             }
-            spawnling.transform.position = new Vector3(pos.x, 0, pos.y) * Radius + transform.position;
+            new ZombieBuilder(ZombieBuilder.WeightedRandomSpecialization()).Generate(PrefabResolver, new Vector3(pos.x, 0, pos.y) * Radius + transform.position);
         }
+    }
 
-//        SpawnCount += _wave * 5;
+    private GameObject PrefabResolver(ZombieSpecialization specialization)
+    {
+        switch (specialization)
+        {
+            case ZombieSpecialization.BOSS:
+                return Boss_Prefab;
+            case ZombieSpecialization.FAST:
+                return Fast_Prefab;
+            case ZombieSpecialization.TANK:
+                return Tank_Prefab;
+            case ZombieSpecialization.FIGHTER:
+                return Fighter_Prefab;
+            case ZombieSpecialization.BASIC:
+                return Basic_Prefab;
+            case ZombieSpecialization.SLOW:
+                return Slow_Prefab;
+            case ZombieSpecialization.STUPID:
+                return Stupid_Prefab;
+            default:
+                throw new ArgumentOutOfRangeException("oops wrong zombie type, you're probably a stupid zombie if you caused this to break :0");
+        }
     }
 }

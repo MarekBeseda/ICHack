@@ -37,10 +37,9 @@ class Game : MonoBehaviour
 		} 
 	}
 
-    /* TODO: Event system? This should be ok for now */
-    public void ZombieDied()
+    public void ZombieDied(int value)
     {
-        _money += 5;
+        _money += value;
         if(MoneyDisplay != null) {
             MoneyDisplay.text = "Money: " + _money;
         }
