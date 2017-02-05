@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class Player : AbstractDamageTaker {
 
+	private float SPEED_FACTOR = 1.4F;
+
 	private bool recoveringStamina;
 	public float stamina;
 	public float baseSpeed;
@@ -59,7 +61,7 @@ public class Player : AbstractDamageTaker {
 		}
 
 		if (Input.GetKey (KeyCode.LeftShift) && !recoveringStamina) {
-			speed *= 2;
+			speed *= SPEED_FACTOR;
 			stamina -= (2 * Time.deltaTime);
 		} else if (stamina < 10) {
 			stamina += Time.deltaTime;
