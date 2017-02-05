@@ -1197,7 +1197,7 @@ MonoBehaviour:
   m_Text: 'Beautiful Basic Pew Pew Tower
 
 
-    $300'
+    $100'
 --- !u!222 &666910758
 CanvasRenderer:
   m_ObjectHideFlags: 0
