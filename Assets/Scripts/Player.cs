@@ -89,4 +89,8 @@ public class Player : AbstractDamageTaker {
         }
         base.TakeDamage(dmg);
     }
+
+    public void OnDestroy() {
+        Game.GameInstance.Lost();
+    }
 }

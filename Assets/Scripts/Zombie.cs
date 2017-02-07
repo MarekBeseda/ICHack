@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.AI;
 using Random = UnityEngine.Random;
 
@@ -12,6 +11,7 @@ public class Zombie : AbstractDamageTaker
     public int power;
     public float attackStopTime;
     public bool Kamikaze;
+    public bool Charging;
     private Cooldown attackCooldown;
 
 
@@ -78,12 +78,18 @@ public class Zombie : AbstractDamageTaker
             Physics.Raycast(new Ray(this.transform.position, Game.GameInstance.Player.transform.position - this.transform.position), out hit, Mathf.Infinity, LayerMask.GetMask("Friendly"));
 
             if (hit.transform.gameObject.GetComponent<Wall>() != null
-                || hit.transform.gameObject.GetComponent<Tower>() != null) this.nma.speed *= 5;
+                || hit.transform.gameObject.GetComponent<Tower>() != null) {
+                nma.speed *= 5;
+                Charging = true;
+            }
 
             return hit.transform;
         }
-        else
-        {
+        else {
+            if (Charging) {
+                Charging = false;
+                nma.speed /= 5;
+            }
             return Game.GameInstance.Player.transform;
         }
     }

@@ -27,7 +27,7 @@ public class ZombieSpawner : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {
-        _waveCooldown = new Cooldown(45f);
+        _waveCooldown = new Cooldown(30f);
 	}
 	
 	// Update is called once per frame

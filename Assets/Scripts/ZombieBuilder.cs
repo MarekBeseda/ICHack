@@ -59,7 +59,7 @@ class ZombieBuilder
             if (x < 7) return ZombieSpecialization.FAST;
             if (x < 12) return ZombieSpecialization.TANK;
             if (x < 18) return ZombieSpecialization.FIGHTER;
-            if (x < 30) return ZombieSpecialization.BASIC;
+            if (x < 28) return ZombieSpecialization.BASIC;
             if (x < 32) return ZombieSpecialization.KAMIKAZE;
         }
         else
@@ -68,7 +68,7 @@ class ZombieBuilder
             if (x < 9) return ZombieSpecialization.FAST;
             if (x < 15) return ZombieSpecialization.TANK;
             if (x < 23) return ZombieSpecialization.FIGHTER;
-            if (x < 30) return ZombieSpecialization.BASIC;
+            if (x < 25) return ZombieSpecialization.BASIC;
             if (x < 32) return ZombieSpecialization.KAMIKAZE;
         }
 

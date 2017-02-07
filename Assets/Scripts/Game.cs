@@ -1,9 +1,16 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 class Game : MonoBehaviour
 {
+    // Variables for score screen
+    public static bool GameLost;
+    public static int WaveNumber;
+    public static int ZombiesKilled;
+    public static int MoneyEarned;
+
     public Text MoneyDisplay;
     public Text WaveDisplay;
     public Text ZombieDisplay;
@@ -18,8 +25,14 @@ class Game : MonoBehaviour
     public int Money
     {
         get { return _money; }
-        set
-        {
+        set {
+            // Add difference to money earned tally
+            if (value > _money) {
+                Debug.Log("Money earned changed by " + (value - _money));
+                MoneyEarned += (value - _money);
+                Debug.Log("Now " + MoneyEarned);
+            }
+
             _money = value;
             if (MoneyDisplay != null)
             {
@@ -56,9 +69,11 @@ class Game : MonoBehaviour
 
     private bool isPaused = false;
 
-    void Start()
-    {
+    void Start() {
+        GameLost = false;
+        ZombiesKilled = 0;
         Money = 0;
+        MoneyEarned = 0;
         GameInstance = this;
         GetComponent<WorldGenerator>().GenerateTerrain(Terrain.activeTerrain.terrainData);
     }
@@ -79,8 +94,9 @@ class Game : MonoBehaviour
         }
     }
 
-    public void ZombieDied(int value)
-    {
+    public void ZombieDied(int value) {
+        if (GameLost) return;
+        ZombiesKilled++;
         Money += value;
         ZombieCount--;
     }
@@ -107,5 +123,12 @@ class Game : MonoBehaviour
         pos3 += Game.GameInstance.Player.transform.position;
         
         return pos3;
+    }
+
+    public void Lost() {
+        // :(
+        GameLost = true;
+        WaveNumber = _wave;
+        SceneManager.LoadScene("lost");
     }
 }
